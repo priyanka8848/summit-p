@@ -229,7 +229,7 @@ const UseCheckoutPageHook = () => {
       partyName = 'Guest';
     }
     console.log('payment gateway ordersummary', orderSummary);
-    if (CONSTANTS.ALLOW_PAYMENT_GATEWAY === true) {
+    if (CONSTANTS.ENABLE_PAYMENT_INTEGRATION === true) {
       console.log('payment gateway');
       let paymentApiRes = await RedirectPayment(cartListingItems?.name, orderSummary[10]?.value, 'Quotation', TokenFromStore?.token);
 

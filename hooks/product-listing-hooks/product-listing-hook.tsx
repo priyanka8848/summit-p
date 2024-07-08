@@ -103,13 +103,13 @@ const useProductListing = () => {
   };
   const checkFiltersValue = () => {};
   const handleProductListingForLoadMore = () => {
-    if (CONSTANTS.ENABLE_LOAD_MORE) {
-      setProductListingData((productListingData = [...productListingData, ...product_listing_state_from_redux.productListData]));
-    }
-    if (CONSTANTS.ENABLE_PAGINATION) {
+    if (CONSTANTS.SHOW_MORE_ITEMS === "paginate") {
       if (productListingData.length === 0) {
         setProductListingData((productListingData = [...product_listing_state_from_redux.productListData]));
       }
+    }
+    else {
+      setProductListingData((productListingData = [...productListingData, ...product_listing_state_from_redux.productListData]));
     }
   };
   useEffect(() => {
@@ -152,11 +152,11 @@ const useProductListing = () => {
       token: TokenFromStore?.token,
     };
     dispatch(FiltersThunk(requestParams) as any);
-    if (CONSTANTS.ENABLE_TOGGLE_PRODUCT_LISTING_VIEW) {
-      // dispatch(setProductsView("list-view"));
-    } else {
-      dispatch(setProductsView(CONSTANTS.PRODUCT_LISTING_VIEW));
-    }
+    // if (CONSTANTS.ENABLE_TOGGLE_PRODUCT_LISTING_VIEW) {
+    //   // dispatch(setProductsView("list-view"));
+    // } else {
+    //   dispatch(setProductsView(CONSTANTS.PRODUCT_LISTING_VIEW));
+    // }
     if (router.query.hasOwnProperty('filter')) {
       const encodedFilterString: any = router.query.filter;
       if (encodedFilterString !== undefined) {
@@ -216,7 +216,7 @@ const useProductListing = () => {
     }
     setToggleProductListView(product_view_slice_from_redux?.view);
   }, [product_listing_state_from_redux, filters_state_from_redux]);
-
+console.log(productListingData,"productListingData")
   return {
     productsLoading,
     productListingData,

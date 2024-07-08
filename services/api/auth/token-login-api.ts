@@ -36,9 +36,11 @@ const getTokenLoginApi: any = async (values: any) => {
     const googleLoginFuntion = getGoogleLoginApi(values);
     return googleLoginFuntion;
   } else {
+    alert("hi")
     await axios.post(`${CONSTANTS.API_BASE_URL}/${CONSTANTS.API_MANDATE_PARAMS}${params}`, undefined, config).then((res) => {
-      console.log('@@token login', res);
+     
       response = res?.data?.message;
+      console.log('@@token login', response);
       if (values?.guest !== null) {
         localStorage.setItem('guestToken', response.access_token);
       }

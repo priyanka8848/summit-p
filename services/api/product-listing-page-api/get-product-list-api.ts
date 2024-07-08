@@ -8,13 +8,14 @@ export const fetchProductListing = async (query: any) => {
   let page_no: any;
   let limit: any;
   const version = CONSTANTS.VERSION;
-  if (CONSTANTS.ENABLE_LOAD_MORE) {
-    page_no = 1;
-    limit = 4 * Number(query.url_params.page);
-  }
-  if (CONSTANTS.ENABLE_PAGINATION) {
+  
+  if (CONSTANTS.SHOW_MORE_ITEMS) {
     page_no = query?.url_params?.page;
     limit = 12;
+  }
+  else {
+    page_no = 1;
+    limit = 4 * Number(query.url_params.page);
   }
   // const price_range = 'low_to_high';
   const category: any = query.url_params.category;

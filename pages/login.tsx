@@ -1,12 +1,13 @@
 import React from 'react';
-import LoginComponent from '../components/Auth/LoginComponent';
+import LoginComponent from '../components/Auth/Loginpage';
 import { CONSTANTS } from '../services/config/app-config';
 import MetaTag from '../services/api/general_apis/meta-tag-api';
+import Loginpage from '../components/Auth/Loginpage';
 
 const login = () => {
   return (
     <>
-      <LoginComponent />
+      <Loginpage />
     </>
   );
 };
