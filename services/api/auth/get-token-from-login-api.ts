@@ -23,6 +23,7 @@ const getTokenFromLoginAPI: any = async (loginParams: TypeLoginAPIParams) => {
 };
 
 const getAccessTokenFromAPI = async (loginParams: TypeLoginAPIParams) => {
+  console.log(loginParams, 'loginParams');
   const usr = loginParams.values.usr;
   const pwd = encodeURIComponent(loginParams.values.pwd);
   const version = CONSTANTS.VERSION;

@@ -6,7 +6,7 @@ const sendOTPToUserAPI = async (emailValue: any) => {
   const version = CONSTANTS.VERSION;
   const method = 'send_otp';
   const entity = 'otp';
-  const params = `?version=${version}&method=${method}&entity=${entity}&usr=${emailValue.email}`;
+  const params = `?version=${version}&method=${method}&entity=${entity}&usr=${emailValue.usr}`;
   const config = {
     headers: {
       Accept: 'application/json',

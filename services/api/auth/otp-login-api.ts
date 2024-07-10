@@ -9,7 +9,7 @@ const OtpLoginApi = async (request: any) => {
   const method = 'signin';
   const entity = 'signin';
   const otpLogin = 'true';
-  const params = `?version=${version}&method=${method}&entity=${entity}&usr=${request.values.email}&pwd=${request.values.password}&with_otp=${otpLogin}`;
+  const params = `?version=${version}&method=${method}&entity=${entity}&usr=${request?.values?.usr}&pwd=${request?.values?.pwd}&with_otp=${otpLogin}`;
   const config = {
     headers: {
       Accept: 'application/json',

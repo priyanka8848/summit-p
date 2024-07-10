@@ -1,5 +1,5 @@
 import CatalogList from '../../components/Catalog/CatalogList';
-import Header from '../../components/Header/Header';
+import Header from '../../components/PageMetaData/PageMetaData';
 import ProductListingMaster from '../../components/ProductListingComponents/ProductListingMaster';
 import MetaTag from '../../services/api/general_apis/meta-tag-api';
 import { CONSTANTS } from '../../services/config/app-config';
