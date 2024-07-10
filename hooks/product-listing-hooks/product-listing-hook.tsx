@@ -31,14 +31,27 @@ const useProductListing = () => {
   const [productListTotalCount, setProductListTotalCount] = useState<number>(0);
   const [filtersData, setFiltersData] = useState<any>([]);
   const [selectedFilters, setSelectedFilters] = useState<any>([]);
+  console.log(currency_state_from_redux, 'currency_state_from_redux');
   const handlePrice = (e: any) => {
     setPrice(e.target.value);
   };
   const handlePaginationBtn = (pageNo: any) => {
+    console.log(query, 'ff');
     router.push({
       query: { ...query, page: pageNo + 1 },
     });
   };
+  useEffect(() => {
+    const currentPage = Number(query.page) || 1;
+    router.push({
+      query: {
+        ...query,
+        page: currentPage,
+        currency: currency_state_from_redux?.selected_currency_value,
+      },
+    });
+  }, [currency_state_from_redux]);
+
   const handleApplyFilters = async (event: any) => {
     let duplicateFilters: any;
     const section = event.target.name;
@@ -103,12 +116,11 @@ const useProductListing = () => {
   };
   const checkFiltersValue = () => {};
   const handleProductListingForLoadMore = () => {
-    if (CONSTANTS.SHOW_MORE_ITEMS === "paginate") {
+    if (CONSTANTS.SHOW_MORE_ITEMS === 'paginate') {
       if (productListingData.length === 0) {
         setProductListingData((productListingData = [...product_listing_state_from_redux.productListData]));
       }
-    }
-    else {
+    } else {
       setProductListingData((productListingData = [...productListingData, ...product_listing_state_from_redux.productListData]));
     }
   };
@@ -216,7 +228,7 @@ const useProductListing = () => {
     }
     setToggleProductListView(product_view_slice_from_redux?.view);
   }, [product_listing_state_from_redux, filters_state_from_redux]);
-console.log(productListingData,"productListingData")
+  console.log(productListingData, 'productListingData');
   return {
     productsLoading,
     productListingData,
